@@ -49,6 +49,10 @@ jobs:
       - name: Get module version number
         run: |
           majorMinorVersionNumber=$(jq '(.version.major | tostring) + "." + (.version.minor | tostring)' ${{ env.MODULE_METADATA_FILE_PATH }} -r )
+          echo $majorMinorVersionNumber
+          echo ${{ env.MODULE_FILE_PATH }}
+          echo ${{ env.MODULE_REGISTRY_SERVER }}
+          echo ${{ env.MODULE_NAME }}
           versionNumber="$majorMinorVersionNumber.${{ github.run_number }}"
           echo "MODULE_VERSION=$versionNumber" >> $GITHUB_ENV      
       - uses: azure/cli@v1
