@@ -41,20 +41,6 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       
-      - name: Install Bicep
-        shell: pwsh
-        run: |
-          az config set bicep.use_binary_from_path=False
-          az bicep install
-        
-      # Adding a step to explicitly install the latest Bicep CLI because there is
-      # always a delay in updating Bicep CLI in the job runner environments.
-      - name: Install the latest Bicep CLI
-        run: |
-          curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
-          chmod +x ./bicep
-          sudo mv ./bicep /usr/local/bin/bicep
-          bicep --version
       - name: Get module version number
         run: |
           majorMinorVersionNumber=$(jq '(.version.major | tostring) + "." + (.version.minor | tostring)' ${{ env.MODULE_METADATA_FILE_PATH }} -r )
