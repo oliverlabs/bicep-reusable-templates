@@ -70,5 +70,5 @@ jobs:
         with:
           azcliversion: 2.45.0
           inlineScript: |
-            /home/runner/.azure/bin/bicep publish --file modules/storage-account/main.bicep --target "br:${{ env.MODULE_REGISTRY_SERVER }}/${{ env.MODULE_NAME }}:v6"
+            /usr/local/bin/bicep publish --file modules/storage-account/main.bicep --target "br:${{ env.MODULE_REGISTRY_SERVER }}/${{ env.MODULE_NAME }}:v6"
                       
