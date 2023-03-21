@@ -17,7 +17,7 @@ permissions:
 
 env:
   MODULE_NAME: storage-account
-  MODULE_REGISTRY_SERVER: bicepmol.azurecr.io
+  MODULE_REGISTRY_SERVER: oliverlabs.azurecr.io
   MODULE_FILE_PATH: modules/storage-account/main.bicep
   MODULE_METADATA_FILE_PATH: modules/storage-account/metadata.json
 
@@ -57,5 +57,5 @@ jobs:
           azcliversion: 2.45.0
           inlineScript: |
             ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
-            az bicep publish --file modules/storage-account/main.bicep --target br:${{ env.MODULE_REGISTRY_SERVER }}/${{ env.MODULE_NAME }}:${{ env.MODULE_VERSION }}
+            az bicep publish --file ${{ MODULE_METADATA_FILE_PATH }} --target br:${{ env.MODULE_REGISTRY_SERVER }}/${{ env.MODULE_NAME }}:${{ env.MODULE_VERSION }}
                       
