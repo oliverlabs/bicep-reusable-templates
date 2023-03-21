@@ -15,7 +15,7 @@ permissions:
 
 env:
   MODULE_NAME: storage-account
-  MODULE_REGISTRY_SERVER: oliverlabs.azurecr.io
+  MODULE_REGISTRY_SERVER: bicepmol.azurecr.io
   MODULE_FILE_PATH: modules/storage-account/main.bicep
   MODULE_METADATA_FILE_PATH: modules/storage-account/metadata.json
 
