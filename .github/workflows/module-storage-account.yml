@@ -59,12 +59,12 @@ jobs:
           echo ${{ env.MODULE_REGISTRY_SERVER }}
           echo ${{ env.MODULE_NAME }}
           versionNumber="$majorMinorVersionNumber.${{ github.run_number }}"
-          echo "MODULE_VERSION=$versionNumber" >> $GITHUB_ENV      
+          echo "MODULE_VERSION=$versionNumber" >> $GITHUB_ENV     
+          echo ${{ env.MODULE_VERSION }}
       - uses: azure/cli@v1
         name: Publish module
         with:
           azcliversion: 2.29.0
           inlineScript: |
-            az bicep publish --file ${{ env.MODULE_FILE_PATH }} \
-            --target br:${{ env.MODULE_REGISTRY_SERVER }}/${{ env.MODULE_NAME }}:${{ env.MODULE_VERSION }}
+            az bicep publish --file modules/storage-account/main.bicep --target br:${{ env.MODULE_REGISTRY_SERVER }}/${{ env.MODULE_NAME }}:v6
                       
